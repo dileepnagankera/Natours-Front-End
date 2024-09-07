@@ -51,13 +51,13 @@ const ToursComponent = () => {
               </h4>
               <p className="card__text">{tour.summary}</p>
               <div className="card__data">
-                <svg class="card__icon">
+                <svg className="card__icon">
                   <use href="img/icons.svg#icon-map-pin"></use>
                 </svg>
                 <span>{tour.startLocation.description}</span>
               </div>
               <div className="card__data">
-                <svg class="card__icon">
+                <svg className="card__icon">
                   <use href="img/icons.svg#icon-calendar"></use>
                 </svg>
                 <span>
@@ -70,13 +70,13 @@ const ToursComponent = () => {
                 </span>
               </div>
               <div className="card__data">
-                <svg class="card__icon">
+                <svg className="card__icon">
                   <use href="img/icons.svg#icon-flag"></use>
                 </svg>
                 <span>{tour.locations.length} stops</span>
               </div>
               <div className="card__data">
-                <svg class="card__icon">
+                <svg className="card__icon">
                   <use href="img/icons.svg#icon-user"></use>
                 </svg>
                 <span>{tour.maxGroupSize} people</span>
@@ -98,7 +98,7 @@ const ToursComponent = () => {
                 </span>
               </p>
               <a
-                href={`/tour/${tour._id}`}
+                href={`/tour/${tour.slug}`}
                 className="btn btn--green btn--small"
               >
                 Details
@@ -112,9 +112,3 @@ const ToursComponent = () => {
 };
 
 export default ToursComponent;
- // <span>
-                  // {tour.startDates[0].toLocaleString("en-us", {
-                   //  month: "long",
-                   //  year: "numeric",
-                  // })}
-                 //</span>

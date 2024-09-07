@@ -16,19 +16,15 @@ const Header = () => {
       </div>
 
       <div className="flex gap-6">
-        <nav>
-          <ui className="flex gap-10 list-none">
+        <nav className="flex gap-10 list-none">
+         
             <li>
-              <Link to="/login">
-               Login
-              </Link>
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link to="signup">
-                Signup
-              </Link>
+              <Link to="signup">Signup</Link>
             </li>
-          </ui>
+          
         </nav>
       </div>
     </header>

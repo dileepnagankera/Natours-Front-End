@@ -34,15 +34,50 @@ const LoginComponent = () => {
     setFormValid(!emailError && !passwordError);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    validateForm();
+const handleSubmit = (e) => {
+  e.preventDefault();
+  validateForm();
 
-    if (formValid) {
-      // Handle successful form submission
-      console.log('Form submitted:', { email, password });
-    }
+  if (formValid) {
+    const loginData = {
+      email,
+      password,
+    };
+
+    // Sending the data using fetch
+    fetch("http://localhost:5000/api/v1/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginData),
+    })
+      .then((response) => {
+        const contentType = response.headers.get("Content-Type");
+
+        // Check if the response is JSON
+        if (contentType && contentType.includes("application/json")) {
+          return response.json(); // Parse JSON response
+        } else {
+          // If not JSON, return the raw text response to inspect it
+          return response.text().then((text) => {
+            console.error("Raw response:", text);
+            throw new Error("Response is not JSON");
+          });
+        }
+      })
+      .then((data) => {
+        // Handle the JSON response
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error("Error:", error);
+      });
   }
+};
+
+
   return (
     <main className="main">
       <div className="login-form">
